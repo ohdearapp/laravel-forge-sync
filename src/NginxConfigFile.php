@@ -33,7 +33,7 @@ class NginxConfigFile
 
     public function protocol(): string
     {
-        return $this->serverPort() === "443"
+        return $this->serverPort() === '443'
             ? 'https'
             : 'http';
     }
