@@ -1,10 +1,10 @@
 # Laravel Forge Sync
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/:package_name.svg?style=flat-square)](https://packagist.org/packages/spatie/:package_name)
-[![Build Status](https://img.shields.io/travis/spatie/:package_name/master.svg?style=flat-square)](https://travis-ci.org/spatie/:package_name)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/ohdearapp/laravel-forge-sync.svg?style=flat-square)](https://packagist.org/packages/ohdearapp/laravel-forge-sync)
+[![Build Status](https://img.shields.io/travis/ohdearapp/laravel-forge-sync/master.svg?style=flat-square)](https://travis-ci.org/ohdearapp/laravel-forge-sync)
 [![SensioLabsInsight](https://img.shields.io/sensiolabs/i/xxxxxxxxx.svg?style=flat-square)](https://insight.sensiolabs.com/projects/xxxxxxxxx)
-[![Quality Score](https://img.shields.io/scrutinizer/g/spatie/:package_name.svg?style=flat-square)](https://scrutinizer-ci.com/g/spatie/:package_name)
-[![Total Downloads](https://img.shields.io/packagist/dt/spatie/:package_name.svg?style=flat-square)](https://packagist.org/packages/spatie/:package_name)
+[![Quality Score](https://img.shields.io/scrutinizer/g/ohdearapp/laravel-forge-sync.svg?style=flat-square)](https://scrutinizer-ci.com/g/ohdearapp/laravel-forge-sync)
+[![Total Downloads](https://img.shields.io/packagist/dt/ohdearapp/laravel-forge-sync.svg?style=flat-square)](https://packagist.org/packages/ohdearapp/laravel-forge-sync)
 
 This package allows you to easily synchronize your [Laravel Forge](https://forge.laravel.com) Apps with the [Oh-Dear! App](https://ohdearapp.com).
 ## Installation
