@@ -9,9 +9,8 @@ class ForgeSyncServiceProvider extends ServiceProvider
     public function boot()
     {
         if ($this->app->runningInConsole()) {
-
             $this->publishes([
-                __DIR__ . '/../config/forge-sync.php' => config_path('forge-sync.php'),
+                __DIR__.'/../config/forge-sync.php' => config_path('forge-sync.php'),
             ], 'config');
 
             $this->commands([
@@ -22,6 +21,6 @@ class ForgeSyncServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/forge-sync.php', 'forge-sync');
+        $this->mergeConfigFrom(__DIR__.'/../config/forge-sync.php', 'forge-sync');
     }
 }

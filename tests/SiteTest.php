@@ -24,8 +24,8 @@ class SiteTest extends TestCase
     /** @test */
     public function it_can_get_the_url()
     {
-        $this->assertEquals('https://example.com',$this->httpsSite->url());
+        $this->assertEquals('https://example.com', $this->httpsSite->url());
 
-        $this->assertEquals('http://example.com',$this->httpSite->url());
+        $this->assertEquals('http://example.com', $this->httpSite->url());
     }
 }

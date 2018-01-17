@@ -3,8 +3,8 @@
 namespace OhDear\ForgeSync;
 
 use Exception;
-use Illuminate\Console\Command;
 use OhDear\PhpSdk\OhDear;
+use Illuminate\Console\Command;
 
 class SyncSitesCommand extends Command
 {
@@ -49,7 +49,7 @@ class SyncSitesCommand extends Command
         );
 
         //TO DO: $team seems to be a null value
-        preg_match("/ID: ([0-9]+)/", $choice, $team);
+        preg_match('/ID: ([0-9]+)/', $choice, $team);
 
         return last($team);
     }
@@ -57,7 +57,6 @@ class SyncSitesCommand extends Command
     protected function syncSites(string $siteChoice)
     {
         if (str_is('<comment>All Sites</comment>', $siteChoice)) {
-
             $this->info('Syncing all sites...');
 
             $this->syncableSites
@@ -97,5 +96,4 @@ class SyncSitesCommand extends Command
             return "<comment>{$site->url()}</comment>";
         })->merge(['<comment>All Sites</comment>'])->toArray();
     }
-
 }

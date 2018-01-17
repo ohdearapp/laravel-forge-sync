@@ -4,7 +4,7 @@ namespace OhDear\ForgeSync;
 
 class Site
 {
-    /** @var \OhDear\ForgeSync\NginxConfigFile  */
+    /** @var \OhDear\ForgeSync\NginxConfigFile */
     protected $nginxConfigFile;
 
     public function __construct(string $nginxConfileFileContent)

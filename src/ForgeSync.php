@@ -2,11 +2,11 @@
 
 namespace OhDear\ForgeSync;
 
-use Illuminate\Support\Collection;
 use OhDear\PhpSdk\OhDear;
-use OhDear\PhpSdk\Resources\Site as OhDearSite;
 use Themsaid\Forge\Forge;
+use Illuminate\Support\Collection;
 use Themsaid\Forge\Resources\Server;
+use OhDear\PhpSdk\Resources\Site as OhDearSite;
 use Themsaid\Forge\Resources\Site as ForgeSite;
 
 class ForgeSync
@@ -17,7 +17,7 @@ class ForgeSync
     /** @var \OhDear\PhpSdk\OhDear */
     protected $ohDear;
 
-    /** @var integer */
+    /** @var int */
     protected $ohDearTeamId;
 
     public function __construct(int $ohDearTeamId, string $ohDearApiToken = null, string $forgeApiToken = null)

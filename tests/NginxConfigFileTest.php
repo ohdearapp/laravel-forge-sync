@@ -6,7 +6,6 @@ use OhDear\ForgeSync\NginxConfigFile;
 
 class NginxConfigFileTest extends TestCase
 {
-
     /** @var \OhDear\ForgeSync\NginxConfigFile */
     protected $nginxConfigFile;
 
@@ -38,6 +37,4 @@ class NginxConfigFileTest extends TestCase
 
         $this->assertFalse($nginxConfileFile->shouldBeMonitoredByOhDear());
     }
-
-
 }
