@@ -26,9 +26,9 @@ class NginxConfigFile
 
     public function serverPort(): ?string
     {
-        preg_match("/.?(listen)\s([0-9a-zA-Z.]*).?/s", $this->configContent, $ssl_matches);
+        preg_match("/.?(listen)\s([0-9a-zA-Z.]*).?/s", $this->configContent, $matches);
 
-        return last($ssl_matches);
+        return last($matches);
     }
 
     public function protocol(): string
