@@ -1,0 +1,61 @@
+{
+    "name": "ohdear/forge-sync",
+    "description": "Sync Laravel Forge sites with Oh Dear!",
+    "keywords": [
+        "ohdear",
+        "laravel",
+        "forge",
+        "uptime"
+    ],
+    "homepage": "https://github.com/ohdear/forge-sync",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lukas Kämmerling",
+            "email": "kontakt@lukas-kaemmerling.de",
+            "homepage": "https://lukas-kaemmerling.de",
+            "role": "Developer"
+        },
+        {
+            "name": "Freek Van der Herten",
+            "email": "freek@spatie.be",
+            "homepage": "https://ohdearapp.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "5.5.*",
+        "illuminate/console": "5.5.*",
+        "themsaid/forge-sdk": "^1.2",
+        "ohdearapp/ohdear-php-sdk": "0.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "OhDear\\ForgeSync\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "OhDear\\ForgeSync\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit tests/",
+        "test-coverage": "phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "OhDear\\ForgeSync\\ForgeSyncServiceProvider"
+            ]
+        }
+    }
+}
