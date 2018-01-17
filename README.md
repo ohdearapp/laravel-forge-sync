@@ -1,4 +1,4 @@
-# Laravel Forge Sync
+# Sync Laravel Forge sites with Oh Dear!
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ohdearapp/laravel-forge-sync.svg?style=flat-square)](https://packagist.org/packages/ohdearapp/laravel-forge-sync)
 [![Build Status](https://img.shields.io/travis/ohdearapp/laravel-forge-sync/master.svg?style=flat-square)](https://travis-ci.org/ohdearapp/laravel-forge-sync)
