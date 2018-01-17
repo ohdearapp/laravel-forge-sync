@@ -2,14 +2,14 @@
 
 namespace OhDear\ForgeSync\Tests;
 
-use OhDear\ForgeSync\Model\Site;
+use OhDear\ForgeSync\Site;
 
 class SiteTest extends TestCase
 {
-    /** @var \OhDear\ForgeSync\Model\Site */
+    /** @var \OhDear\ForgeSync\Site */
     protected $httpsSite;
 
-    /** @var \OhDear\ForgeSync\Model\Site */
+    /** @var \OhDear\ForgeSync\Site */
     protected $httpSite;
 
     public function setUp()

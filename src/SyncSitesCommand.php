@@ -2,8 +2,8 @@
 
 namespace OhDear\ForgeSync;
 
+use Exception;
 use Illuminate\Console\Command;
-use OhDear\ForgeSync\Model\Site;
 use OhDear\PhpSdk\OhDear;
 
 class SyncSitesCommand extends Command
@@ -26,7 +26,7 @@ class SyncSitesCommand extends Command
 
         $this->sync = new ForgeSync($ohDearTeamId, $this->option('ohDearKey'), $this->option('forgeKey'));
 
-        $this->syncableSites = $this->sync->getSyncableSites();
+        $this->syncableSites = $this->sync->sites();
 
         if ($this->syncableSites->count() === 0) {
             $this->warn("You don't have any sites that can be synced!");
@@ -71,13 +71,13 @@ class SyncSitesCommand extends Command
                     return $site->url() === $url;
                 })
                 ->each(function (Site $site) {
-                    $succeeded = $this->sync->registerSiteAtOhDear($site->url());
+                    try {
+                        $this->sync->addToOhDear($site->url());
 
-                    if (!$succeeded) {
-                        $this->error("Could not add site `{$site->url()}`");
+                        $this->comment("Added site `{$site->url()}`");
+                    } catch (Exception $exception) {
+                        $this->error("Could not add site `{$site->url()}` because {$exception->getMessage()}");
                     }
-
-                    $this->comment("Added site `{$site->url()}`");
                 });
         }
     }

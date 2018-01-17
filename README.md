@@ -7,6 +7,9 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/ohdearapp/laravel-forge-sync.svg?style=flat-square)](https://packagist.org/packages/ohdearapp/laravel-forge-sync)
 
 This package allows you to easily synchronize your [Laravel Forge](https://forge.laravel.com) Apps with the [Oh-Dear! App](https://ohdearapp.com).
+
+![Screencast of Usage](http://g.recordit.co/dPu0Ha2ErB.gif)
+
 ## Installation
 
 You can install the package via composer:
@@ -47,23 +50,28 @@ return [
 
 ## Usage
 
-When you edit the configuration values just type:
+Run this command to start the sync process. It will ask you which Forge sites should be sync to which Oh Dear! team.
+
 ``` bash
 php artisan ohdear:forge-sync
 ```
-And you should be asked about the team and the sites that should be synced.
 
-### Screencast
-![Screencast of Usage](http://g.recordit.co/dPu0Ha2ErB.gif)
+Alternatively you could also run this piece of code:
 
-### Usage as Code
-You can use this package as Code too, just use the ForgeSync::class:
 
 ``` php 
-$forgeSync = new OhDear\ForgeSync\ForgeSync($ohdear_team_id, $ohdear_api_token = null, $forge_api_token = null);
-foreach ($forgeSync->getSyncableSites() as $syncableSite) {
-    $sync = $forgeSync->registerSiteAtOhDear($syncableSite->getUrl());
-}
+use OhDear\ForgeSync\ForgeSync;
+use OhDear\ForgeSync\Site;
+
+$forgeSync = new ForgeSync(
+   $ohDearTeamId, 
+   $ohDearApiToken,
+   $forgeApiToken
+);
+
+$forgeSync->sites()->each(function(Site $site) {
+    $forgeSync->addToOhDear($site);
+});
 ```
 ### Testing
 

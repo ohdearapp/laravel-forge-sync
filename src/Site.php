@@ -1,8 +1,6 @@
 <?php
 
-namespace OhDear\ForgeSync\Model;
-
-use OhDear\ForgeSync\NginxConfigFile;
+namespace OhDear\ForgeSync;
 
 class Site
 {

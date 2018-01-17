@@ -2,13 +2,11 @@
 
 namespace OhDear\ForgeSync;
 
-use Exception;
 use Illuminate\Support\Collection;
 use OhDear\PhpSdk\OhDear;
 use OhDear\PhpSdk\Resources\Site as OhDearSite;
 use Themsaid\Forge\Forge;
 use Themsaid\Forge\Resources\Server;
-use OhDear\ForgeSync\Model\Site;
 use Themsaid\Forge\Resources\Site as ForgeSite;
 
 class ForgeSync
@@ -31,7 +29,7 @@ class ForgeSync
         $this->forge = new Forge($forgeApiToken ?? config('forge-sync.forge_api_token'));
     }
 
-    public function getSyncableSites(): Collection
+    public function sites(): Collection
     {
         $ohDearSites = collect($this->ohDear->sites())->map(function (OhDearSite $ohDearSite) {
             return $ohDearSite->url;
@@ -52,21 +50,8 @@ class ForgeSync
         });
     }
 
-    /**
-     * @param string $url
-     *
-     * @return bool|string
-     */
-    public function registerSiteAtOhDear(string $url)
+    public function addToOhDear(Site $site)
     {
-        try {
-            $this->ohDear->createSite(['url' => $url, 'team_id' => $this->ohDearTeamId]);
-
-            return true;
-        } catch (Exception $exception) {
-            return $exception->getMessage();
-        }
+        return $this->ohDear->createSite(['url' => $site->url(), 'team_id' => $this->ohDearTeamId]);
     }
-
-
 }
