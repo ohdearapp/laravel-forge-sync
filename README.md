@@ -29,7 +29,7 @@ This is the content of the file that will be published at `config/forge-sync.php
 ```` php 
 return [
 
-    /**
+    /*
      * An Oh Dear! API token.
      *
      * Learn how to get an API token at the Oh Dear! docs
@@ -37,7 +37,7 @@ return [
      */
     'ohdear_api_token' => '',
 
-    /**
+    /*
      * A Forge API token.
      *
      * You can create an API token here:
