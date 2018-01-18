@@ -51,7 +51,7 @@ class SyncSitesCommand extends Command
             $this->teamChoices()
         );
 
-        return $this->availableTeams->filter(function($team) use($choice){
+        return $this->availableTeams->filter(function ($team) use ($choice) {
             return "<comment>{$team['name']}</comment>" == $choice;
         })->first()['id'];
     }
