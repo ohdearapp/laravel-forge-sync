@@ -14,7 +14,7 @@ class SyncSitesCommand extends Command
     /** @var \Illuminate\Support\Collection */
     protected $syncableSites;
 
-    protected $signature = 'ohdear:forge-sync {--ohDearKey=} {--forgeKey=}';
+    protected $signature = 'ohdear:forge-sync {--ohDearKey=} {--forgeKey=} {--dry-run}';
 
     protected $description = 'Sync existing Laravel Forge Sites to Oh Dear!';
 
@@ -28,14 +28,17 @@ class SyncSitesCommand extends Command
 
         $this->syncableSites = $this->sync->sites();
 
-        if ($this->syncableSites->count() === 0) {
+        if ($this->syncableSites->count() === 0)
+        {
             $this->warn("You don't have any sites that can be synced!");
 
             return;
         }
 
         $choice = $this->choice('Which Forge sites should be synced with Oh Dear?', $this->siteChoices());
-
+        if ($this->option('dry-run') == null) {
+            $this->info("Dry-Run Mode: We don't create any Site at Oh Dear.");
+        }
         $this->syncSites($choice);
 
         $this->info('All done');
@@ -71,8 +74,9 @@ class SyncSitesCommand extends Command
                 })
                 ->each(function (Site $site) {
                     try {
-                        $this->sync->addToOhDear($site->url());
-
+                        if ($this->option('dry-run') == null) {
+                            $this->sync->addToOhDear($site->url());
+                        }
                         $this->comment("Added site `{$site->url()}`");
                     } catch (Exception $exception) {
                         $this->error("Could not add site `{$site->url()}` because {$exception->getMessage()}");
