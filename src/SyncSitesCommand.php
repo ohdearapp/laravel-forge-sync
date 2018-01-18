@@ -39,7 +39,7 @@ class SyncSitesCommand extends Command
         if ($this->option('dry-run') == null) {
             $this->info("Dry-Run Mode: We don't create any Site at Oh Dear.");
         }
-        
+
         $this->syncSites($choice);
 
         $this->info('All done');
