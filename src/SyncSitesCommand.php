@@ -34,11 +34,13 @@ class SyncSitesCommand extends Command
             return;
         }
 
+        if ($this->option('dry-run') == true) {
+            $this->warn("Dry-Run Mode: We don't create any Site at Oh Dear.");
+        }
+
         $choice = $this->choice('Which Forge sites should be synced with Oh Dear?', $this->siteChoices());
 
-        if ($this->option('dry-run') == null) {
-            $this->info("Dry-Run Mode: We don't create any Site at Oh Dear.");
-        }
+
 
         $this->syncSites($choice);
 
