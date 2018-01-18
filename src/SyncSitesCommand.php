@@ -40,8 +40,6 @@ class SyncSitesCommand extends Command
 
         $choice = $this->choice('Which Forge sites should be synced with Oh Dear?', $this->siteChoices());
 
-
-
         $this->syncSites($choice);
 
         $this->info('All done');
