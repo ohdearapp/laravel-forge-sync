@@ -36,9 +36,8 @@ class SyncSitesCommand extends Command
 
             return;
         }
-
-        if ($this->option('dry-run') == true) {
-            $this->warn("Dry-Run Mode: We don't create any Site at Oh Dear.");
+        if ($this->option('dry-run')) {
+            $this->warn("Running in dry-mode: we make any changes to your Oh Dear! account.");
         }
 
         $choice = $this->choice('Which Forge sites should be synced with Oh Dear?', $this->siteChoices());
@@ -76,10 +75,14 @@ class SyncSitesCommand extends Command
                     return $site->url() === $url;
                 })
                 ->each(function (Site $site) {
+                    if ($this->option('dry-run')) {
+                        $this->comment("Would have added site `{$site->url()}` if not running in dry-mode.");
+
+                        return;
+                    }
+                    
                     try {
-                        if ($this->option('dry-run') == null) {
-                            $this->sync->addToOhDear($site);
-                        }
+                        $this->sync->addToOhDear($site);
 
                         $this->comment("Added site `{$site->url()}`");
                     } catch (Exception $exception) {
