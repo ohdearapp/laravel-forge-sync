@@ -37,7 +37,7 @@ class SyncSitesCommand extends Command
             return;
         }
         if ($this->option('dry-run')) {
-            $this->warn("Running in dry-mode: we make any changes to your Oh Dear! account.");
+            $this->warn('Running in dry-mode: we make any changes to your Oh Dear! account.');
         }
 
         $choice = $this->choice('Which Forge sites should be synced with Oh Dear?', $this->siteChoices());
