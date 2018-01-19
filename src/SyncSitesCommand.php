@@ -12,6 +12,9 @@ class SyncSitesCommand extends Command
     protected $sync;
 
     /** @var \Illuminate\Support\Collection */
+    protected $availableTeams;
+
+    /** @var \Illuminate\Support\Collection */
     protected $syncableSites;
 
     protected $signature = 'ohdear:forge-sync {--ohDearKey=} {--forgeKey=} {--dry-run}';
@@ -52,10 +55,9 @@ class SyncSitesCommand extends Command
             $this->teamChoices()
         );
 
-        //TO DO: $team seems to be a null value
-        preg_match('/ID: ([0-9]+)/', $choice, $team);
-
-        return last($team);
+        return $this->availableTeams->filter(function ($team) use ($choice) {
+            return "<comment>{$team['name']}</comment>" == $choice;
+        })->first()['id'];
     }
 
     protected function syncSites(string $siteChoice)
@@ -76,7 +78,7 @@ class SyncSitesCommand extends Command
                 ->each(function (Site $site) {
                     try {
                         if ($this->option('dry-run') == null) {
-                            $this->sync->addToOhDear($site->url());
+                            $this->sync->addToOhDear($site);
                         }
 
                         $this->comment("Added site `{$site->url()}`");
@@ -90,8 +92,9 @@ class SyncSitesCommand extends Command
     protected function teamChoices(): array
     {
         $ohDear = new OhDear($this->option('ohDearKey') ?? config('forge-sync.ohdear_api_token'));
+        $this->availableTeams = collect($ohDear->me()->teams['data']->attributes);
 
-        return collect($ohDear->me()->teams['data']->attributes)->map(function ($team) {
+        return $this->availableTeams->map(function ($team) {
             return "<comment>{$team['name']}</comment>";
         })->toArray();
     }
