@@ -55,7 +55,7 @@ class SyncSitesCommand extends Command
         );
 
         return $this->availableTeams->filter(function ($team) use ($choice) {
-            return "<comment>{$team['name']}</comment>" == $choice;
+            return "<comment>{$team['name']}</comment>" === $choice;
         })->first()['id'];
     }
 
@@ -80,7 +80,7 @@ class SyncSitesCommand extends Command
 
                         return;
                     }
-                    
+
                     try {
                         $this->sync->addToOhDear($site);
 
