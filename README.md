@@ -8,7 +8,7 @@
 
 This package allows you to easily import your [Laravel Forge](https://forge.laravel.com) Apps with the [Oh-Dear! App](https://ohdearapp.com).
 
-![Screencast of Usage](http://g.recordit.co/dPu0Ha2ErB.gif)
+![Screencast of Usage](https://ohdearapp.github.io/laravel-forge-sync/demo.gif)
 
 At the moment it will only import sites from Forge to Oh Dear!
 
