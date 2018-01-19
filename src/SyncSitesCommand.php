@@ -95,6 +95,7 @@ class SyncSitesCommand extends Command
     protected function teamChoices(): array
     {
         $ohDear = new OhDear($this->option('ohDearKey') ?? config('forge-sync.ohdear_api_token'));
+
         $this->availableTeams = collect($ohDear->me()->teams['data']->attributes);
 
         return $this->availableTeams->map(function ($team) {

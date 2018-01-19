@@ -1,4 +1,4 @@
-# Sync Laravel Forge sites with Oh Dear!
+# Import Laravel Forge sites with Oh Dear!
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ohdearapp/laravel-forge-sync.svg?style=flat-square)](https://packagist.org/packages/ohdearapp/laravel-forge-sync)
 [![Build Status](https://img.shields.io/travis/ohdearapp/laravel-forge-sync/master.svg?style=flat-square)](https://travis-ci.org/ohdearapp/laravel-forge-sync)
@@ -6,9 +6,11 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/ohdearapp/laravel-forge-sync.svg?style=flat-square)](https://scrutinizer-ci.com/g/ohdearapp/laravel-forge-sync)
 [![Total Downloads](https://img.shields.io/packagist/dt/ohdearapp/laravel-forge-sync.svg?style=flat-square)](https://packagist.org/packages/ohdearapp/laravel-forge-sync)
 
-This package allows you to easily synchronize your [Laravel Forge](https://forge.laravel.com) Apps with the [Oh-Dear! App](https://ohdearapp.com).
+This package allows you to easily import your [Laravel Forge](https://forge.laravel.com) Apps with the [Oh-Dear! App](https://ohdearapp.com).
 
 ![Screencast of Usage](http://g.recordit.co/dPu0Ha2ErB.gif)
+
+At the moment it will only import sites from Forge to Oh Dear!
 
 ## Installation
 
@@ -73,6 +75,15 @@ $forgeSync->sites()->each(function(Site $site) {
     $forgeSync->addToOhDear($site);
 });
 ```
+
+### Skipping sites
+
+If you have a site on Forge that you do not wish to import in Oh Dear! simply add this line to the Nginx config of that site. 
+
+```
+#OH-DEAR-DO-NOT-MONITOR
+```
+
 ### Testing
 
 ``` bash
