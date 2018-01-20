@@ -19,28 +19,28 @@ class SyncSitesCommand extends Command
 
     protected $signature = 'ohdear:forge-sync {--ohDearKey=} {--forgeKey=} {--dry-run}';
 
-    protected $description = 'Sync existing Laravel Forge Sites to Oh Dear!';
+    protected $description = 'Import existing Laravel Forge sites to Oh Dear!';
 
     public function handle()
     {
         $ohDearTeamId = $this->askOhDearTeamId();
 
-        $this->info('Scan your Forge sites... (this could need a little bit of time).');
+        $this->info('Scanning your Forge sites... (this could need a little bit of time).');
 
         $this->sync = new ForgeSync($ohDearTeamId, $this->option('ohDearKey'), $this->option('forgeKey'));
 
         $this->syncableSites = $this->sync->sites();
 
         if ($this->syncableSites->count() === 0) {
-            $this->warn("You don't have any sites that can be synced!");
+            $this->warn("You don't have any sites that can be imported!");
 
             return;
         }
         if ($this->option('dry-run')) {
-            $this->warn('Running in dry-mode: we make any changes to your Oh Dear! account.');
+            $this->warn('Running in dry-mode: we will not make any changes to your Oh Dear! account.');
         }
 
-        $choice = $this->choice('Which Forge sites should be synced with Oh Dear?', $this->siteChoices());
+        $choice = $this->choice('Which Forge sites should be imported into Oh Dear?', $this->siteChoices());
 
         $this->syncSites($choice);
 
@@ -50,7 +50,7 @@ class SyncSitesCommand extends Command
     protected function askOhDearTeamId(): int
     {
         $choice = $this->choice(
-            'Please select the Oh Dear! team that should be synced with your forge account.',
+            'Please select the Oh Dear! team into which you would like to import these sites.',
             $this->teamChoices()
         );
 
@@ -62,7 +62,7 @@ class SyncSitesCommand extends Command
     protected function syncSites(string $siteChoice)
     {
         if (str_is('<comment>All Sites</comment>', $siteChoice)) {
-            $this->info('Syncing all sites...');
+            $this->info('Importing all sites...');
 
             $this->syncableSites
                 ->filter(function (Site $site) use ($siteChoice) {
