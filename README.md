@@ -6,7 +6,7 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/ohdearapp/laravel-forge-sync.svg?style=flat-square)](https://scrutinizer-ci.com/g/ohdearapp/laravel-forge-sync)
 [![Total Downloads](https://img.shields.io/packagist/dt/ohdearapp/laravel-forge-sync.svg?style=flat-square)](https://packagist.org/packages/ohdearapp/laravel-forge-sync)
 
-This package allows you to easily import your [Laravel Forge](https://forge.laravel.com) sites to your [Oh-Dear! App](https://ohdearapp.com) account.
+This package allows you to easily import your [Laravel Forge](https://forge.laravel.com) sites to your [Oh-Dear! App](https://ohdear.app) account.
 
 ![Screencast of Usage](https://ohdearapp.github.io/laravel-forge-sync/demo.gif)
 
@@ -28,14 +28,14 @@ php artisan vendor:publish --provider="OhDear\ForgeSync\ForgeSyncServiceProvider
 
 This is the content of the file that will be published at `config/forge-sync.php`. You should provide an Oh Dear! API token and a Forge API token.
 
-```` php 
+```` php
 return [
 
     /*
      * An Oh Dear! API token.
      *
      * Learn how to get an API token at the Oh Dear! docs
-     * https://ohdearapp.com/docs/api/authentication
+     * https://ohdear.app/docs/api/authentication
      */
     'ohdear_api_token' => '',
 
@@ -46,7 +46,7 @@ return [
      * https://forge.laravel.com/user/profile#/api
      */
     'forge_api_token' => '',
-    
+
 ];
 ````
 
@@ -61,12 +61,12 @@ php artisan ohdear:forge-sync
 Alternatively you could also run this piece of code:
 
 
-``` php 
+``` php
 use OhDear\ForgeSync\ForgeSync;
 use OhDear\ForgeSync\Site;
 
 $forgeSync = new ForgeSync(
-   $ohDearTeamId, 
+   $ohDearTeamId,
    $ohDearApiToken,
    $forgeApiToken
 );
@@ -78,7 +78,7 @@ $forgeSync->sites()->each(function(Site $site) {
 
 ### Skipping sites
 
-If you have a site on Forge that you do not wish to import into Oh Dear! simply add this line to the Nginx config of that site. 
+If you have a site on Forge that you do not wish to import into Oh Dear! simply add this line to the Nginx config of that site.
 
 ```
 #OH-DEAR-DO-NOT-MONITOR
@@ -100,7 +100,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ### Security
 
-If you discover any security related issues, please email support@ohdearapp.com instead of using the issue tracker.
+If you discover any security related issues, please email support@ohdear.app instead of using the issue tracker.
 
 ## Credits
 

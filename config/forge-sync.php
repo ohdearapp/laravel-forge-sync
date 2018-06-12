@@ -6,7 +6,7 @@ return [
      * An Oh Dear! API token.
      *
      * Learn how to get an API token at the Oh Dear! docs
-     * https://ohdearapp.com/docs/api/authentication
+     * https://ohdear.app/docs/api/authentication
      */
     'ohdear_api_token' => '',
 
